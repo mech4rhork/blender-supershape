@@ -379,7 +379,7 @@ def _init():
 _init()
     
 # MAIN LOOP
-passed_itr = 0
+skipped_itr = 0
 for i in range(1, ITERATION_COUNT+1):
     # supershape parameters (random)
     params = set_parameters()
@@ -394,8 +394,8 @@ for i in range(1, ITERATION_COUNT+1):
     try:
         create_supershape(m, a, b, n1, n2, n3)
     except:
-        passed_itr += 1
-        print("Iteration " + str(i) + " passed")
+        skipped_itr += 1
+        print("Iteration " + str(i) + " skipped")
         pass
         continue
     
@@ -412,8 +412,8 @@ for i in range(1, ITERATION_COUNT+1):
     render_scene(i)
 
 # execution time
-print("Iterations: {itr} ({passed} passed), Time: {t}".format(
-    itr=ITERATION_COUNT-passed_itr,
-    passed=passed_itr,
+print("Iterations: {itr} ({skipped} skipped), Time: {t}".format(
+    itr=ITERATION_COUNT-skipped_itr,
+    skipped=skipped_itr,
     t=datetime.now()-start_time
 ))
